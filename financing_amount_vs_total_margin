@@ -5,7 +5,7 @@ t_margin_defaulted AS (
         , financing_amount
         , COUNT(loan_id) AS count_defaulted
         , SUM(CAST(REPLACE(margin, '.', '') AS INTEGER)) AS defaulted_margin
-    FROM newtable 
+    FROM financing_loan
     WHERE repayment_status = 'defaulted'
     GROUP BY 1,2
 ),
@@ -15,7 +15,7 @@ t_margin_repaid AS (
         , financing_amount
         , COUNT(loan_id) AS count_repaid
         , SUM(CAST(REPLACE(margin, '.', '') AS INTEGER)) AS repaid_margin
-    FROM newtable 
+    FROM financing_loan
     WHERE repayment_status = 'repaid'
     GROUP BY 1,2
 ),
@@ -25,7 +25,7 @@ t_sum_margin AS (
         , financing_amount
         , COUNT(loan_id) AS total_count_financing
         , SUM(CAST(REPLACE(margin, '.', '') AS INTEGER)) AS total_margin
-    FROM newtable
+    FROM financing_loan
     GROUP BY 1,2
 )
 

@@ -15,7 +15,7 @@ SELECT
         END
     ) AS grand_total_margin
 FROM 
-    newtable
+    financing_loan
 WHERE 
     transaction_month::DATE IN ('2024-01-01', '2024-02-01', '2024-03-01', '2024-04-01', '2024-05-01', '2024-06-01')
 GROUP BY 
